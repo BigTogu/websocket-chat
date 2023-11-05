@@ -3,7 +3,6 @@ import { ObjectId } from "mongodb";
 import MessageModel from "./collections.js";
 
 export async function insertChatMessages(message) {
-  console.log(message, "message");
   try {
     const newMessage = new MessageModel({
       author: message.author,
@@ -11,13 +10,13 @@ export async function insertChatMessages(message) {
       // sala: message.sala
       // 'timestamp' se asigna automáticamente a la fecha actual
     });
-    //sale bien pero no se guarda en la base de datos
-    await MessageModel.collection.insertOne(newMessage);
-    //guardar en la base de datos usando el client que es la base de datos creada mediante mongoose en el archivo connection.js
+
+    //permite añadir el mensaje(entrada nueva) a la collection MessageModel(messages) que está dentro de la local db especificada en connection.js
+    MessageModel.collection.insertOne(newMessage);
   } catch (err) {
     console.log(err);
   } finally {
-    // await client.close();
+    // hgola
   }
 }
 
