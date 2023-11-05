@@ -8,7 +8,7 @@ dotenv.configDotenv();
 // Configura las variables de entorno desde el archivo .env.local
 dotenv.config({ path: __dirname + "../.env.local" });
 
-const clientBase = mongoose.createConnection(
+export const clientBase = mongoose.createConnection(
   process.env.MONGODB_CONNECTION_STRING
 );
 

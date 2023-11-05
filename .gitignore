@@ -1,1 +1,5 @@
 node_modules/
+*.wt
+*.wtp
+*.turtle
+*.env.*
