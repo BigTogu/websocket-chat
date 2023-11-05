@@ -1,11 +1,9 @@
 import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 import client from "./connection.js";
-//Crea el esquema de la colección
+
+// Crea el esquema de la colección
 const messagesSchema = new mongoose.Schema({
-  // _id: {
-  //   type: ObjectId,
-  // },
   author: {
     type: "string",
     required: true,
@@ -25,10 +23,7 @@ const messagesSchema = new mongoose.Schema({
   },
 });
 
-// Crear un modelo de Mongoose basado en el esquema definido
-// const MessageModel = mongoose.model("Message", messagesSchema);
-
+// Crea el modelo de la colección dentro de client
 const MessageModel = client.model("Message", messagesSchema);
-// await MessageModel.createCollection();
 
 export default MessageModel;
