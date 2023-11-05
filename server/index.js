@@ -15,15 +15,15 @@ await getChatMessages().then((messages) => {
   return messages;
 });
 
-// action when connection is based
+// Action when connection is based
 io.on("connection", (socket) => {
   socket.emit("messages", messages);
   socket.on("new-message", (data) => {
     insertChatMessages(data);
     messages.push(data);
-    // // //permite que los mensajes se vean en la misma pantalla
+    // Permite que los mensajes se vean en la misma pantalla
     socket.emit("messages", messages);
-    // // // permite que los mensajes se vean en todas las pantallas
+    // Permite que los mensajes se vean en todas las pantallas
     socket.broadcast.emit("messages", messages);
   });
 });
